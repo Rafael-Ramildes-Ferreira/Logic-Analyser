@@ -4,25 +4,6 @@
 #include <iostream>
 
 
-ComplexFormula::ComplexFormula(Operator *op)
-{
-	this->_operator = op;
-}
-
-Operator *ComplexFormula::get_operator(){
-	return this->_operator;
-}
-
-void ComplexFormula::print(){
-	std::cout << this->_operator->to_string() << std::endl;
-}
-
-std::string ComplexFormula::to_string(){
-	std::string str = "(";
-	str = str + this->_operator->to_string();
-	return str + ")";
-}
-
 Proposition::Proposition(const char name)
 {
 	this->identifier = name;
@@ -70,9 +51,11 @@ void AndOperator::print(){
 }
 
 std::string AndOperator::to_string(){
-	std::string str = this->phi->to_string();
+	std::string str = "(";
+	str = str + this->phi->to_string();
 	str = str + " ^ ";
-	return str + this->psi->to_string();
+	str = str + this->psi->to_string();
+	return str + ")";
 }
 
 
@@ -92,9 +75,11 @@ void OrOperator::print(){
 }
 
 std::string OrOperator::to_string(){
-	std::string str = this->phi->to_string();
+	std::string str = "(";
+	str = str + this->phi->to_string();
 	str = str + " v ";
-	return str + this->psi->to_string();
+	str = str + this->psi->to_string();
+	return str + ")";
 }
 
 
@@ -114,8 +99,10 @@ void XorOperator::print(){
 }
 
 std::string XorOperator::to_string(){
-	std::string str = this->phi->to_string();
+	std::string str = "(";
+	str = str + this->phi->to_string();
 	str = str + " XOR ";
-	return str + this->psi->to_string();
+	str = str + this->psi->to_string();
+	return str + ")";
 }
 

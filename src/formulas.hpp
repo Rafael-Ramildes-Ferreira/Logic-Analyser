@@ -10,29 +10,16 @@ public:
 	virtual std::string to_string() = 0;
 };
 
-class Operator
+class Operator : public Formula
 {
 private:
 	std::vector<Verdict> truth_table;
 public:
 	std::vector<Verdict> get_truth_table();
-	virtual void print() = 0;
-	virtual std::string to_string() = 0;
 };
 
 
 /* Especific types -----------------------------------------------------------*/
-class ComplexFormula : public Formula
-{
-private:
-	Operator *_operator;
-public:
-	ComplexFormula(Operator *op);
-	Operator *get_operator();
-	void print() override;
-	std::string to_string() override;
-};
-
 class Proposition : public Formula
 {
 private:
