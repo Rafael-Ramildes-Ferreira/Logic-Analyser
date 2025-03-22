@@ -51,11 +51,8 @@ void AndOperator::print(){
 }
 
 std::string AndOperator::to_string(){
-	std::string str = "(";
-	str = str + this->phi->to_string();
-	str = str + " ^ ";
-	str = str + this->psi->to_string();
-	return str + ")";
+	std::string str = "(" + this->phi->to_string() + " ^ " + this->psi->to_string() + ")";
+	return str;
 }
 
 
@@ -75,11 +72,8 @@ void OrOperator::print(){
 }
 
 std::string OrOperator::to_string(){
-	std::string str = "(";
-	str = str + this->phi->to_string();
-	str = str + " v ";
-	str = str + this->psi->to_string();
-	return str + ")";
+	std::string str = "(" + this->phi->to_string() + " v " + this->psi->to_string() + ")";
+	return str;
 }
 
 
@@ -99,10 +93,7 @@ void XorOperator::print(){
 }
 
 std::string XorOperator::to_string(){
-	std::string str = "(";
-	str = str + this->phi->to_string();
-	str = str + " XOR ";
-	str = str + this->psi->to_string();
-	return str + ")";
+	std::string str = "(" + this->phi->to_string() + " XOR " + this->psi->to_string() + ")";
+	return str;
 }
 
