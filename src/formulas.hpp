@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <string>
 
@@ -16,6 +17,19 @@ private:
 	std::vector<Verdict> truth_table;
 public:
 	std::vector<Verdict> get_truth_table();
+	virtual std::vector<int> find_cases(bool verdict) = 0;
+};
+
+class TwoValueOperator : public Operator
+{
+private:
+	Formula *phi;
+	Formula *psi;
+public:
+	Formula *get_phi();
+	Formula *get_psi();
+	void set_phi(Formula *f);
+	void set_psi(Formula *f);
 };
 
 
@@ -31,37 +45,31 @@ public:
 };
 
 
-class AndOperator : public Operator
+class AndOperator : public TwoValueOperator
 {
-private:
-	Formula *phi;
-	Formula *psi;
 public:
 	AndOperator(Formula *first, Formula *second);
 	void print() override;
 	std::string to_string() override;
+	std::vector<int> find_cases(bool verdict) override;
 };
 
 
-class OrOperator : public Operator
+class OrOperator : public TwoValueOperator
 {
-private:
-	Formula *phi;
-	Formula *psi;
 public:
 	OrOperator(Formula *first, Formula *second);
 	void print() override;
 	std::string to_string() override;
+	std::vector<int> find_cases(bool verdict) override;
 };
 
 
-class XorOperator : public Operator
+class XorOperator : public TwoValueOperator
 {
-private:
-	Formula *phi;
-	Formula *psi;
 public:
 	XorOperator(Formula *first, Formula *second);
 	void print() override;
 	std::string to_string() override;
+	std::vector<int> find_cases(bool verdict) override;
 };
