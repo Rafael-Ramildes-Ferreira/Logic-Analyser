@@ -8,6 +8,7 @@ int main(){
 	auto formula1 = AndOperator(&propositon1,&propositon2);
 	auto formula2 = OrOperator(&propositon3,&formula1);
 
+	// formula1.print();
 	formula2.print();
 
 	return 0;

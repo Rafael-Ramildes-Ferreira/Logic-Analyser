@@ -2,6 +2,7 @@
 #include "interpretation.hpp"
 
 #include <vector>
+#include <stdexcept>
 
 bool refute_tautology(Formula *target)
 {
@@ -27,7 +28,10 @@ bool resolve_hypothesys(Case *c)
 			for(auto interp : vec){
 				Case new_case(*c);
 				Formula *firstf = base_two_value->get_phi();
+				if(firstf==nullptr) throw std::runtime_error("Object is uninitialized");
 				Formula *secondf = base_two_value->get_psi();
+				if(secondf==nullptr) throw std::runtime_error("Object is uninitialized");
+				
 				switch (interp)
 				{
 				case 0:

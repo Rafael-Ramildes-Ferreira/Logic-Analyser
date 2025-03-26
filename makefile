@@ -8,6 +8,8 @@ OBJ_DIR = obj
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
+FLAGS = -Wall -Wextra -pedantic -fsanitize=address 
+
 $(OBJ_DIR):
 	mkdir $@
 
