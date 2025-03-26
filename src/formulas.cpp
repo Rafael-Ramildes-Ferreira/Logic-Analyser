@@ -9,6 +9,14 @@ std::vector<Verdict> Operator::get_truth_table()
 	return this->truth_table;
 }
 
+TwoValueOperator::TwoValueOperator(Formula *first, Formula *second){
+	if(first == nullptr) throw std::runtime_error("Invalid nullptr argument");
+	if(second == nullptr) throw std::runtime_error("Invalid nullptr argument");
+	
+	this->set_phi(first);
+	this->set_psi(second);
+}
+
 Formula *TwoValueOperator::get_phi()
 {
 	return phi;
@@ -45,10 +53,8 @@ std::string Proposition::to_string()
 }
 
 
-AndOperator::AndOperator(Formula *first, Formula *second)
+AndOperator::AndOperator(Formula *first, Formula *second) : TwoValueOperator(first, second)
 {
-	this->set_phi(first);
-	this->set_psi(second);
 	/* This may be not very optimized */
 	this->get_truth_table().emplace_back(true);
 	this->get_truth_table().emplace_back(false);
@@ -92,10 +98,8 @@ std::vector<int> AndOperator::find_cases(bool verdict)
 }
 
 
-OrOperator::OrOperator(Formula *first, Formula *second)
+OrOperator::OrOperator(Formula *first, Formula *second) : TwoValueOperator(first, second)
 {
-	this->set_phi(first);
-	this->set_psi(second);
 	/* This may be not very optimized */
 	this->get_truth_table().emplace_back(true);
 	this->get_truth_table().emplace_back(true);
@@ -139,10 +143,8 @@ std::vector<int> OrOperator::find_cases(bool verdict)
 }
 
 
-XorOperator::XorOperator(Formula *first, Formula *second)
+XorOperator::XorOperator(Formula *first, Formula *second) : TwoValueOperator(first, second)
 {
-	this->set_phi(first);
-	this->set_psi(second);
 	/* This may be not very optimized */
 	this->get_truth_table().emplace_back(false);
 	this->get_truth_table().emplace_back(true);

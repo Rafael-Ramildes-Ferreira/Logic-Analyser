@@ -26,6 +26,7 @@ private:
 	Formula *phi;
 	Formula *psi;
 public:
+	TwoValueOperator(Formula *first, Formula *second);
 	Formula *get_phi();
 	Formula *get_psi();
 	void set_phi(Formula *f);
